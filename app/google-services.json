@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "680890058799",
+    "project_id": "fir-maptrackingexample",
+    "storage_bucket": "fir-maptrackingexample.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:680890058799:android:1af46b1672b42832ca1eda",
+        "android_client_info": {
+          "package_name": "com.example.firebasemapfeatureexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "680890058799-qo1ujpifjg00h8f9jfio0k4fiktjaut8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArhyktsiBgby8qR7UCoscXetN9m_9wyKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "680890058799-qo1ujpifjg00h8f9jfio0k4fiktjaut8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
