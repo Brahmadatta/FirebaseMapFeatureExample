@@ -1,13 +1,15 @@
 package com.example.firebasemapfeatureexample
 
 import android.Manifest
+import android.content.ComponentName
 import android.content.DialogInterface
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.os.Build
 import android.os.Bundle
 import android.os.Looper
 import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -70,6 +72,15 @@ class MapActivity : AppCompatActivity(),OnMapReadyCallback,GoogleMap.OnMarkerCli
 
         checkPermissionMap()
 
+        if ("xiaomi".equals(Build.MANUFACTURER, ignoreCase = true)) {
+            val autostartIntent = Intent()
+            autostartIntent.component = ComponentName(
+                "com.miui.securitycenter",
+                "com.miui.permcenter.autostart.AutoStartManagementActivity"
+            )
+            startActivity(autostartIntent)
+        }
+
     }
 
     private fun checkPermissionMap() {
@@ -83,6 +94,7 @@ class MapActivity : AppCompatActivity(),OnMapReadyCallback,GoogleMap.OnMarkerCli
             != PackageManager.PERMISSION_GRANTED) {
             askForLocationPermissions();
         } else {
+            ContextCompat.startForegroundService(this, Intent(this, LocationService::class.java))
             fusedLocationClient.lastLocation.addOnSuccessListener(this) { location ->
                 // Got last known location. In some rare situations this can be null.
                 if (location != null) {
@@ -252,9 +264,6 @@ class MapActivity : AppCompatActivity(),OnMapReadyCallback,GoogleMap.OnMarkerCli
                 //Do you work
                 setUpMap()
 
-            } else {
-                Toast.makeText(this, "Can not proceed! i need permission", Toast.LENGTH_SHORT)
-                    .show()
             }
         }
     }

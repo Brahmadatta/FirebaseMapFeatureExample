@@ -4,11 +4,16 @@
     package="com.example.firebasemapfeatureexample">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"
         android:maxSdkVersion="30"/>
+    <uses-permission android:name="oppo.permission.OPPO_COMPONENT_SAFE"/>
+    <uses-permission android:name="com.huawei.permission.external_app_settings.USE_COMPONENT"/>
 
     <application
         android:allowBackup="true"
+        android:name=".ApplicationClass"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -17,6 +22,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirebaseMapFeatureExample"
         tools:targetApi="31">
+
+        <service android:name=".LocationService"
+            android:foregroundServiceType="location"
+            android:exported="false"/>
+
+        <receiver android:name=".SendLocation"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
